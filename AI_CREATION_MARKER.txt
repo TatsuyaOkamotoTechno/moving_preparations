@@ -1,0 +1,2 @@
+This workspace marker was created by the assistant to verify file creation.
+If you see this file, file creation is working.

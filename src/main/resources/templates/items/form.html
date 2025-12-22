@@ -1,0 +1,50 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>荷物 登録/編集</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="container">
+        <h2>荷物 登録/編集</h2>
+        <form th:action="@{/items}" th:object="${item}" method="post">
+            <input type="hidden" th:field="*{id}" />
+            <div class="form-row">
+                <label>名称</label>
+                <input type="text" th:field="*{name}" />
+            </div>
+            <div class="form-row">
+                <label>カテゴリ</label>
+                <input type="text" th:field="*{category}" />
+            </div>
+            <div class="form-row">
+                <label>数量</label>
+                <input type="number" th:field="*{quantity}" />
+            </div>
+            <div class="form-row">
+                <label>処理方針</label>
+                <select th:field="*{actionPlan}">
+                    <option th:each="ap : ${actionPlans}" th:value="${ap}" th:text="${ap}"></option>
+                </select>
+            </div>
+            <div class="form-row">
+                <label>ステータス</label>
+                <select th:field="*{status}">
+                    <option th:each="s : ${statuses}" th:value="${s}" th:text="${s}"></option>
+                </select>
+            </div>
+            <div class="form-row">
+                <label>備考</label>
+                <textarea th:field="*{notes}"></textarea>
+            </div>
+            <div class="form-actions">
+                <a class="button" href="/items">戻る</a>
+                <button class="button primary" type="submit">登録/保存</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

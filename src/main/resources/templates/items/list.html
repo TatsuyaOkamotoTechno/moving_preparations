@@ -1,0 +1,44 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>荷物・購入予定品一覧</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="container">
+        <div class="toolbar">
+            <a class="button" href="/items/new">+ 新規登録</a>
+        </div>
+
+        <div class="list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>名称</th>
+                        <th>カテゴリ</th>
+                        <th>数量</th>
+                        <th>処理方針</th>
+                        <th>ステータス</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="item : ${items}">
+                        <td th:text="${item.name}">名称</td>
+                        <td th:text="${item.category}">カテゴリ</td>
+                        <td th:text="${item.quantity}">0</td>
+                        <td th:text="${item.actionPlan}">TAKE</td>
+                        <td th:text="${item.status}">NOT_STARTED</td>
+                        <td>
+                            <a th:href="@{'/items/' + ${item.id} + '/edit'}">編集</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

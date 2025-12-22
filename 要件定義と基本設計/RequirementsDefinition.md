@@ -71,3 +71,32 @@ flowchart TD
     C --> I[削除確認ダイアログ]
     C --> A
 ```
+
+プロンプト
+
+添付の資料を基にアプリの作成をしてください
+
+# 添付資料内容
+- RequirementsDefinition.md → 要件定義書
+- high-level-design.md → 基本設計書
+- image.png → 画面レイアウト図
+
+# 出力
+- 画面レイアウトの①②③④までだけをを実装して
+- ControllerやService等の必要なフォルダを作成してファイルを作成して
+- ワークスペースは今開いているフォルダー「moving_preparations」
+
+# 現在の状況
+- springプロジェクト作成済み
+- Mavenの依存関係
+    - Spring Boot Dev Tools
+    - Lombok
+    - Spring web
+    - Thymeleaf
+    - JDBC API
+    - My Batis Framework
+    - H2 Database
+
+# その他
+1. 作成する前にどこにどのようなフォルダ・ファイルを作成するか教えて
+1. 作成個所と作成フォルダ・ファイルの確認を私が承認したら、そのまま許可を取らずに作成をしていって

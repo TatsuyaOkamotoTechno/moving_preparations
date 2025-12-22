@@ -1,0 +1,24 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>ShiftPilot - TOP</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="container">
+        <div class="card">
+            <a class="big-link" href="/items">荷物・購入予定品一覧 &gt;</a>
+            <a class="big-link" href="/tasks">手続き一覧 &gt;</a>
+        </div>
+
+        <div class="card">
+            <h3>進捗サマリー</h3>
+            <p>荷物: <span th:text="${total}">0</span> 件</p>
+            <p>完了: <span th:text="${completed}">0</span> 件</p>
+        </div>
+    </div>
+</body>
+</html>
