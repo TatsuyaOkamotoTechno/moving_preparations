@@ -2,16 +2,37 @@ package com.example.moving_preparations.repository;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+import com.example.moving_preparations.mapper.TaskMapper;
 import com.example.moving_preparations.model.Task;
 
-@Mapper
-public interface TaskRepository {
-    List<Task> findAll();
-    Task findById(@Param("id") Long id);
-    void insert(Task task);
-    void update(Task task);
-    void delete(@Param("id") Long id);
+@Repository
+public class TaskRepository {
+
+    private final TaskMapper taskMapper;
+
+    public TaskRepository(TaskMapper taskMapper) {
+        this.taskMapper = taskMapper;
+    }
+
+    public List<Task> findAll() {
+        return taskMapper.findAll();
+    }
+
+    public Task findById(Long id) {
+        return taskMapper.findById(id);
+    }
+
+    public void insert(Task task) {
+        taskMapper.insert(task);
+    }
+
+    public void update(Task task) {
+        taskMapper.update(task);
+    }
+
+    public void delete(Long id) {
+        taskMapper.delete(id);
+    }
 }
