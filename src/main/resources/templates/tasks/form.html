@@ -1,0 +1,36 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>手続き 登録/編集</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <style>label{display:block;margin-top:8px}input,select,textarea{width:100%;padding:6px}</style>
+</head>
+<body>
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="container">
+        <h2>手続き 登録/編集</h2>
+        <form th:action="${#strings.isEmpty(task.id) ? '/tasks' : '/tasks/' + task.id}" method="post">
+            <label>手続き名</label>
+            <input type="text" name="name" th:value="${task.name}" required />
+
+            <label>期限日</label>
+            <input type="date" name="deadlineStr" th:value="${task.deadline}" />
+
+            <label>ステータス</label>
+            <select name="status">
+                <option th:each="s : ${statuses}" th:value="${s}" th:text="${s}" th:selected="${s} == ${task.status}"></option>
+            </select>
+
+            <label>備考</label>
+            <textarea name="notes" rows="4" th:text="${task.notes}"></textarea>
+
+            <div style="margin-top:12px">
+                <button type="submit">登録/保存</button>
+                <a href="/tasks">戻る</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

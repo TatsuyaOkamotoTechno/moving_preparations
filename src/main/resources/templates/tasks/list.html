@@ -1,0 +1,46 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>手続き一覧</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <style>table{width:100%;border-collapse:collapse}th,td{border:1px solid #ccc;padding:8px;text-align:left}</style>
+</head>
+<body>
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="container">
+        <div class="toolbar">
+            <a class="button" href="/tasks/new">+ 新規登録</a>
+        </div>
+
+        <div class="list">
+            <table>
+                <thead>
+                    <tr>
+                        <th>手続き名</th>
+                        <th>期限日</th>
+                        <th>ステータス</th>
+                        <th>備考</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="task : ${tasks}">
+                        <td th:text="${task.name}">名前</td>
+                        <td th:text="${task.deadline}">2025-01-01</td>
+                        <td th:text="${task.status}">NOT_STARTED</td>
+                        <td th:text="${task.notes}">備考</td>
+                        <td>
+                            <a th:href="@{'/tasks/' + ${task.id} + '/edit'}">編集</a>
+                            <form th:action="@{'/tasks/' + ${task.id} + '/delete'}" method="post" style="display:inline">
+                                <button type="submit">削除</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
